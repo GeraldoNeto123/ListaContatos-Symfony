@@ -3,39 +3,37 @@
 {% block title %}Contato index{% endblock %}
 
 {% block body %}
-    <h1>Contato index</h1>
+    <h1>Contatos</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
                 <th>Sexo</th>
-                <th>actions</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
         {% for contato in contatos %}
             <tr>
-                <td>{{ contato.id }}</td>
                 <td>{{ contato.nome }}</td>
                 <td>{{ contato.email }}</td>
                 <td>{{ contato.telefone }}</td>
                 <td>{{ contato.sexo }}</td>
                 <td>
-                    <a href="{{ path('contato_show', {'id': contato.id}) }}">show</a>
-                    <a href="{{ path('contato_edit', {'id': contato.id}) }}">edit</a>
+                    <a href="{{ path('contato_show', {'id': contato.id}) }}">Visualizar</a>
+                    <a href="{{ path('contato_edit', {'id': contato.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Nenhum contato encontrado</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('contato_new') }}">Create new</a>
+    <a href="{{ path('contato_new') }}">Novo Contato</a>
 {% endblock %}
