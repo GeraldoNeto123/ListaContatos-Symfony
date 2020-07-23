@@ -16,3 +16,5 @@ Este é um projeto basico em symfony com a finalidade de por em pratica o conehc
 #	- php bin/console doctrine:migrations:migrate
 #Comando para criar um o Crud
 #	- php bin/console make:crud
+#Comando para criar um formulario
+#	- php bin/console make:form

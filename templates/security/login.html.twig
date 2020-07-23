@@ -1,8 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'main-login.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+<div class="container">
+<div class="form-signin" style="background: lightgray;">
 <form class="px-4 py-3" method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -14,7 +16,7 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Fazer login</h1>
+    <h1 class="h3 mb-3 font-weight-normal, text-center">Fazer login</h1>
     <div class="form-group">
         <label for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
@@ -37,11 +39,17 @@
             </label>
         </div>
     #}
-
+    <div class="text-cente">
     <button class="btn btn-lg btn-primary" type="submit">
         Entrar
     </button>
-    <a href="{{ path('registro') }}">Criar uma conta</a>
+    <a href="{{ path('app_forgot_password_request') }}">Esqueci a senha</a>
+    </div>
+    <div class="text-center" style="margin-top: 20px;"> 
+        <a href="{{ path('registro') }}">Criar nova conta</a>
+	</div>
 
 </form>
+</div>
+</div>
 {% endblock %}
