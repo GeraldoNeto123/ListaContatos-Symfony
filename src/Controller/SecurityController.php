@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -32,7 +33,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/create_user", name="registro")
      */
-    public function create(Request $request)
+    public function create(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
@@ -40,9 +41,10 @@ class SecurityController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $newUser = $this->getDoctrine()->getManager();
             $user->setRoles(['ROLE_USER']);
+            $user->setPassword($passwordEncoder->encodePassword($user, $form['password']->getData()));
             $newUser->persist($user);
             $newUser->flush();
-            return $this->redirectToRoute('pp_login');
+            return $this->redirectToRoute('app_login');
         }
         return $this->render('security/create.html.twig', [
             'controller_name' => 'ola Mundo',
