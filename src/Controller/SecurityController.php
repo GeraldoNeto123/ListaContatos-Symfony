@@ -47,7 +47,6 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
         return $this->render('security/create.html.twig', [
-            'controller_name' => 'ola Mundo',
             'formulario' => $form->createView()
         ]);
     }
