@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novo Cadastro{% endblock %}
+
+{% block body %}
+    {{ form(formulario) }}
+    <a href="{{ path('app_login') }}">Voltar</a>
+
+{% endblock %}
