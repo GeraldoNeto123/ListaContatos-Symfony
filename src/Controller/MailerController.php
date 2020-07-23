@@ -15,8 +15,8 @@ class MailerController extends AbstractController
     public function sendEmail(MailerInterface $mailer)
     {
         $email = (new Email())
-            ->from('postmaster@sandboxe7d0daf843e14be4a25f2c5b5f2872d3.mailgun.org')
-            ->to('geraldodoliveira321@gmail.com')
+            ->from('example@gmail.com')
+            ->to('example@gmail.com')
             //->cc('cc@example.com')
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
@@ -26,9 +26,7 @@ class MailerController extends AbstractController
             ->html('<p>See Twig integration for better HTML integration!</p>');
 
         $mailer->send($email);
-        return $this->render('mailer_controller_php/index.html.twig', [
-            'controller_name' => 'MailerControllerPhpController',
-        ]);
+        return $this->redirect('/login');
         // ...
     }
 }
